@@ -1,7 +1,7 @@
 variable "computeName" {
  type = string
 }
-resource "google_compute_instance" "webserver" {
+resource "google_compute_instance" "vm-instance" {
  name = var.computeName
  machine_type = "f1-micro"
  boot_disk {
@@ -18,6 +18,6 @@ resource "google_compute_instance" "webserver" {
 resource "google_compute_network" "vpc_network" {
  name = "terraform-network"
 }
-output "webserver_ip" {
- value = google_compute_instance.webserver.network_interface.0.access_config.0.nat_ip
+output "vm-instance_ip" {
+ value = google_compute_instance.vm-instance.network_interface.0.access_config.0.nat_ip
 }
